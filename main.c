@@ -32,7 +32,7 @@ int main() {
 		BPF_ST_MEM(BPF_W, BPF_REG_10, -4, 0),
 		/* Put frame pointer into R2 */
 		BPF_MOV64_REG(BPF_REG_2, BPF_REG_10),
-		/* Decremet pointer by four */
+		/* Decrement pointer by four */
 		BPF_ALU64_IMM(BPF_ADD, BPF_REG_2, -4),
 		/* Put map_fd into R1 */
 		BPF_LD_MAP_FD(BPF_REG_1, map_fd),
