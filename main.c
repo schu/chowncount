@@ -17,7 +17,7 @@ int main() {
 	/* Map size is 1 since we store only one value, the chown count */
 	map_fd = bpf_create_map(BPF_MAP_TYPE_HASH, sizeof(key), sizeof(value), 1);
 	if (map_fd < 0) {
-		fprintf(stderr, "failed to create map: %s (ret %d)\ngot CAP_SYS_ADMIN?\n", strerror(errno), map_fd);
+		fprintf(stderr, "failed to create map: %s (ret %d)\n", strerror(errno), map_fd);
 		return 1;
 	}
 
@@ -51,7 +51,7 @@ int main() {
 
 	prog_fd = bpf_prog_load(BPF_PROG_TYPE_KPROBE, prog, sizeof(prog), "GPL", LINUX_VERSION_CODE, log_buf, sizeof(log_buf));
 	if (prog_fd < 0) {
-		fprintf(stderr, "failed to load prog: %s (ret %d)\n%s\n", strerror(errno), prog_fd, log_buf);
+		fprintf(stderr, "failed to load prog: %s (ret %d)\ngot CAP_SYS_ADMIN?\n%s\n", strerror(errno), prog_fd, log_buf);
 		return 1;
 	}
 
