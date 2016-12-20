@@ -15,7 +15,7 @@ int main() {
 	void *kprobe;
 
 	/* Map size is 1 since we store only one value, the chown count */
-	map_fd = bpf_create_map(BPF_MAP_TYPE_HASH, sizeof(key), sizeof(value), 1);
+	map_fd = bpf_create_map(BPF_MAP_TYPE_HASH, sizeof(key), sizeof(value), 1, 0);
 	if (map_fd < 0) {
 		fprintf(stderr, "failed to create map: %s (ret %d)\n", strerror(errno), map_fd);
 		return 1;
